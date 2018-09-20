@@ -114,6 +114,11 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<finalName>authorization-service</finalName>
+					<executable>true</executable>
+					<mainClass>com.exrates.me.AuthorizationServerApplication</mainClass>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
