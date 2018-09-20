@@ -4,7 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
@@ -12,11 +14,13 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Aut
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
 import org.springframework.security.oauth2.provider.approval.ApprovalStore;
 import org.springframework.security.oauth2.provider.approval.JdbcApprovalStore;
+import org.springframework.security.oauth2.provider.approval.UserApprovalHandler;
 import org.springframework.security.oauth2.provider.client.JdbcClientDetailsService;
 import org.springframework.security.oauth2.provider.code.AuthorizationCodeServices;
 import org.springframework.security.oauth2.provider.code.JdbcAuthorizationCodeServices;
 import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.JdbcTokenStore;
+import org.springframework.security.oauth2.provider.token.store.redis.RedisTokenStore;
 
 import javax.sql.DataSource;
 
@@ -25,52 +29,40 @@ import javax.sql.DataSource;
 public class AuthorizationServerConfiguration extends AuthorizationServerConfigurerAdapter {
 
     @Autowired
-    DataSource dataSource;
+    TokenStore tokenStore;
 
-    @Bean
-    public JdbcClientDetailsService clientDetailsService() {
-        return new JdbcClientDetailsService(dataSource);
-    }
+    @Autowired
+    AuthorizationCodeServices authorizationCodeServices;
 
-    @Bean
-    public TokenStore tokenStore() {
-        return new JdbcTokenStore(dataSource);
-    }
+    @Autowired
+    ApprovalStore approvalStore;
 
-    @Bean
-    public ApprovalStore approvalStore() {
-        return new JdbcApprovalStore(dataSource);
-    }
+    @Autowired
+    private UserApprovalHandler userApprovalHandler;
 
+    @Autowired
+    JdbcClientDetailsService detailsService;
 
+    @Autowired
+    UserDetailsService userDetailsService;
 
     @Autowired
     @Qualifier("authenticationManagerBean")
     private AuthenticationManager authenticationManager;
 
-
-
-    @Bean
-    public AuthorizationCodeServices authorizationCodeServices() {
-        return new JdbcAuthorizationCodeServices(dataSource);
-    }
-
-    @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
-        clients.withClientDetails(clientDetailsService());
+        clients.withClientDetails(detailsService);
     }
 
-    @Override
-    public void configure(AuthorizationServerSecurityConfigurer oauthServer) throws Exception {
+    public void configure(AuthorizationServerSecurityConfigurer oauthServer){}
 
-    }
-
-    @Override
-    public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
+    public void configure(AuthorizationServerEndpointsConfigurer endpoints)  {
         endpoints
-                .approvalStore(approvalStore())
-                .authorizationCodeServices(authorizationCodeServices())
+                .approvalStore(approvalStore)
+                .userApprovalHandler(userApprovalHandler)
+                .authorizationCodeServices(authorizationCodeServices)
                 .authenticationManager(authenticationManager)
-                .tokenStore(tokenStore());
+                .userDetailsService(userDetailsService)
+                .tokenStore(tokenStore);
     }
 }

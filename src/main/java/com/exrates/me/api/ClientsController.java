@@ -1,7 +1,7 @@
 package com.exrates.me.api;
 
-import com.exrates.me.configuration.AuthorityPropertyEditor;
-import com.exrates.me.configuration.SplitCollectionEditor;
+import com.exrates.me.editor.AuthorityPropertyEditor;
+import com.exrates.me.editor.SplitCollectionEditor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.GrantedAuthority;

@@ -1,4 +1,4 @@
-package com.exrates.me.configuration;
+package com.exrates.me.editor;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

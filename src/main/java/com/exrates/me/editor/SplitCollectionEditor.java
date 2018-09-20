@@ -1,4 +1,4 @@
-package com.exrates.me.configuration;
+package com.exrates.me.editor;
 
 import org.springframework.beans.propertyeditors.CustomCollectionEditor;
 

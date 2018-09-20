@@ -3,6 +3,7 @@ package com.exrates.me.configuration;
 import com.exrates.me.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.context.annotation.Primary;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -16,7 +17,8 @@ import java.util.stream.Collectors;
 import static org.springframework.security.core.userdetails.User.builder;
 
 
-@Component
+@Component(value = "UserDetailsService")
+@Primary
 public class DetailService implements UserDetailsService {
 
     private UserRepository userRepository;
