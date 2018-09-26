@@ -138,6 +138,15 @@
 				</configuration>
 			</plugin>
 		</plugins>
+		<resources>
+			<resource>
+				<directory>${project.basedir}</directory><!-- from -->
+				<targetPath>${project.build.directory}</targetPath><!-- to -->
+				<includes><!-- what -->
+					<include>config/**</include>
+				</includes>
+			</resource>
+		</resources>
 	</build>
 
 	<repositories>

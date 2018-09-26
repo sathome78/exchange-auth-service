@@ -1,10 +1,8 @@
 #!/usr/bin/env bash
 
+ENVIRONMENT_VARIABLE=$1
+
 DOCKER_DEPLOY_DIRECTORY=${PWD}
-
-echo $DOCKER_DEPLOY_DIRECTORY
-
-cd ..
 cd target
 
 TARGET_DIRECTORY=${PWD}
@@ -15,4 +13,4 @@ echo $ARTIFACT_PATH
 
 cd $DOCKER_DEPLOY_DIRECTORY
 
-docker build -t authorization_service --build-arg JAR_FILE=$ARTIFACT_PATH --network=host .
+docker build -t nikita9596/authorization_service --build-arg ENVIRONMENT=${ENVIRONMENT_VARIABLE} .
