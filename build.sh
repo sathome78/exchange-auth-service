@@ -15,4 +15,4 @@ echo $ARTIFACT_PATH
 
 cd $DOCKER_DEPLOY_DIRECTORY
 
-docker build -t authorization_service --build-arg path_to_artifact=$ARTIFACT_PATH .
+docker build -t authorization_service --build-arg JAR_FILE=$ARTIFACT_PATH --network=host .
