@@ -1,6 +1,11 @@
 
 
 FROM java:8
+RUN apt-get update \
+  && DEBIAN_FRONTEND=noninteractive apt-get install -y \
+    net-tools \
+  && apt-get clean \
+  && rm -rf /var/lib/apt/lists/*
 VOLUME /tmp
 ARG APP_PATH=/exrates-auth-service
 ARG ENVIRONMENT
@@ -14,8 +19,8 @@ RUN echo ${CONFIG_FILE_PATh}
 WORKDIR ${APP_PATH}
 
 EXPOSE 8080
+#CMD java $CONFIG_FILE_PATh -jar authorization-service.jar --spring.profiles.active=${ENVIRONMENT}
 
-#CMD ["java","-Dspring.config.location=", '$CONFIG_FILE_PATH', "-jar", "authorization-service.jar"]
-CMD java $CONFIG_FILE_PATh -jar authorization-service.jar
+CMD java  -jar authorization-service.jar
 
 

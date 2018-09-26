@@ -16,18 +16,18 @@ import javax.sql.DataSource;
 
 @SpringBootApplication
 @Configuration
-@EnableJpaRepositories(basePackages = {"com.exrates.me.domain","com.exrates.me.repository"})
+@EnableJpaRepositories(basePackages = {"com.exrates.me.domain", "com.exrates.me.repository"})
 @EnableRedisRepositories
 public class AuthorizationServerApplication {
 
-	@Bean
-	@Primary
-	@ConfigurationProperties(prefix = "spring.datasource")
-	public DataSource mainDataSource() {
-		return DataSourceBuilder.create().type(HikariDataSource.class).build();
-	}
+    @Bean
+    @Primary
+    @ConfigurationProperties(prefix = "spring.datasource")
+    public DataSource mainDataSource() {
+        return DataSourceBuilder.create().type(HikariDataSource.class).build();
+    }
 
-	public static void main(String[] args) {
-		SpringApplication.run(AuthorizationServerApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(AuthorizationServerApplication.class, args);
+    }
 }
