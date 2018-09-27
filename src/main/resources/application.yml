@@ -7,16 +7,28 @@ spring:
         driver-class-name: com.mysql.jdbc.Driver
         jdbc-url: jdbc:mysql://localhost:3306/birzha?useSSL=false
         username: root
-        password: root
+        password: telez1213
         initialization-mode: always
     jpa:
       hibernate:
         ddl-auto: none
+    profiles:
+      active: container
+    redis:
+      host: localhost
+      port: 6379
 # --- server
 server:
   port: 8080
 
-redis:
-  server:
-    port: 6379
-    host: localhost
+#management:
+#  endpoint:
+#    metrics:
+#      enabled: true
+#    logfile:
+#      enabled: true
+#    shutdown:
+#      enabled: false
+#    info:
+#      enabled: true
+

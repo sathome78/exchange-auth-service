@@ -13,4 +13,4 @@ echo $ARTIFACT_PATH
 
 cd $DOCKER_DEPLOY_DIRECTORY
 
-docker build -t nikita9596/authorization_service --build-arg ENVIRONMENT=${ENVIRONMENT_VARIABLE} .
+docker build -t authorization_service --build-arg ENVIRONMENT=${ENVIRONMENT_VARIABLE} .

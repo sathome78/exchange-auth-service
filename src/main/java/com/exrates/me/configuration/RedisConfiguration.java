@@ -12,7 +12,7 @@ import java.io.IOException;
 public class RedisConfiguration {
 
 
-    @Value("${redis.server.port}")
+    @Value("${spring.redis.port}")
     private int redisPort;
 
     private RedisServer redisServer;
