@@ -5,6 +5,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.jdbc.DataSourceBuilder;
+import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
@@ -18,6 +19,7 @@ import javax.sql.DataSource;
 @Configuration
 @EnableJpaRepositories(basePackages = {"com.exrates.me.domain", "com.exrates.me.repository"})
 @EnableRedisRepositories
+@EnableEurekaClient
 public class AuthorizationServerApplication {
 
     @Bean

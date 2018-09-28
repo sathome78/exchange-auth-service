@@ -5,21 +5,30 @@ spring:
             minimum-idle: 1
             maximum-pool-size: 5
         driver-class-name: com.mysql.jdbc.Driver
-        jdbc-url: jdbc:mysql://prodex-replicatest.cedlveyttji9.us-east-2.rds.amazonaws.com:3306/birzha?useSSL=false
-        username: devprod
-        password: Fh24soaf8sy3
+        jdbc-url: jdbc:mysql://localhost:3306/birzha?useSSL=false
+        username: root
+        password: root
         initialization-mode: always
     jpa:
       hibernate:
         ddl-auto: none
     profiles:
-      active: dev
+      active: container
     redis:
-      host: localhost
+      host: 172.10.10.236
       port: 6379
+    application:
+      name: auth-server
 # --- server
 server:
   port: 8080
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka
+  instance:
+    preferIpAddress: true
 
 #management:
 #  endpoint:
@@ -31,10 +40,4 @@ server:
 #      enabled: false
 #    info:
 #      enabled: true
-#  metrics:
-#    enable: true
-#    distribution:
-#      percentiles-histogram: true
-#      sla:
-#        http.server.requests: 1ms,5ms
 
