@@ -43,7 +43,7 @@ public class TokenConfiguration {
     @Bean
     @Autowired
     public TokenStoreUserApprovalHandler userApprovalHandler(TokenStore tokenStore) {
-        TokenStoreUserApprovalHandler handler = new TokenStoreUserApprovalHandler();
+        var handler = new TokenStoreUserApprovalHandler();
         handler.setTokenStore(tokenStore);
         handler.setRequestFactory(new DefaultOAuth2RequestFactory(clientDetailsService()));
         handler.setClientDetailsService(clientDetailsService());
