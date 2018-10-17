@@ -54,7 +54,9 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
         clients.withClientDetails(detailsService);
     }
 
-    public void configure(AuthorizationServerSecurityConfigurer oauthServer){}
+    public void configure(AuthorizationServerSecurityConfigurer oauthServer){
+
+    }
 
     public void configure(AuthorizationServerEndpointsConfigurer endpoints)  {
         endpoints
