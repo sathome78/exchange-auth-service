@@ -33,7 +33,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
     public void configure(WebSecurity web) {
-        web.ignoring().antMatchers("/webjars/**","/resources/**","/swagger-resources/*","/api/*","/swagger-ui.html");
+        web.ignoring().antMatchers("/webjars/**","/resources/**","/swagger-resources/**","/api/**","/swagger-ui.html");
     }
 
     @Override
@@ -43,11 +43,11 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/actuator").permitAll()
                 .antMatchers("/actuator/**").permitAll()
                 .antMatchers("/login","/logout.do").permitAll()
-                .antMatchers("/swagger-resources/*").permitAll()
+                .antMatchers("/swagger-resources/**").permitAll()
                 .antMatchers("/swagger-ui.html").permitAll()
                 .antMatchers("/**").authenticated()
-                .antMatchers("/api/*").permitAll()
-                .antMatchers("/v2/*").permitAll()
+                .antMatchers("/api/**").permitAll()
+                .antMatchers("/v2/**").permitAll()
                 .and()
                 .formLogin()
                 .loginProcessingUrl("/login.do")

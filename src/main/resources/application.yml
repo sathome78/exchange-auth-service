@@ -36,6 +36,7 @@ spring:
           tags: authentication-service
           service-name: authentication-service
           port: 8080
+          instance-id: ${spring.application.name}-${random.uuid}
 # --- server
 server:
   port: 8080
