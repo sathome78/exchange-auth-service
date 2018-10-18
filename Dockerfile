@@ -6,7 +6,7 @@ ARG APP_PATH=/exrates-auth-service
 ARG ENVIRONMENT
 
 RUN mkdir -p exrates-auth-service
-COPY ./exrates-auth-service/com/aak/authorization_server/0.0.1-SNAPSHOT/*.jar ${APP_PATH}/authorization-service.jar
+COPY ./target/authorization-service.jar ${APP_PATH}/authorization-service.jar
 COPY ./target/config/dev/application.yml ${APP_PATH}/application.yml
 ARG CONFIG_FILE_PATH="-Dspring.config.location="${ENVIRONMENT}"/application.yml"
 
