@@ -20,5 +20,6 @@ pipeline {
     stage('Deploy container') {
       steps {
         sh 'docker-17 -H tcp://172.50.10.115:2375 service update --image roadtomoon/exrates-auth-service:latest'
+      }
   }
 }
