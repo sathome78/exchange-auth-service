@@ -20,7 +20,7 @@ pipeline {
     } 
     stage('Deploy container') {
       steps {
-        sh 'docker -H tcp://172.50.10.115:2375 service create -e constraint:node== s92a96xgtcdc0fn797wjikzem roadtomoon/exrates-auth-service:latest'
+        sh 'docker -H tcp://localhost:2375 service create -e constraint:node==s92a96xgtcdc0fn797wjikzem 172.50.50.5:5000/authservice:latest'
       }
     }
   }  
