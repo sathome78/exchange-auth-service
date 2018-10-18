@@ -1,8 +1,18 @@
 node {
     def app
+    
+    def downloadSpec = """{
+        "files": [
+            {
+                "pattern": "exrates-auth-service/*.jar",
+                "target": "exrates-auth-service/"
+            }
+         ]
+    }"""
 
     stage('Clone repository') {
     checkout scm
+    server.download(downloadSpec)
     }
 
     stage('Build image') {
