@@ -1,5 +1,6 @@
 node {
     def app
+    def server = Artifactory.server 'art-1'
     
     def downloadSpec = """{
         "files": [
