@@ -20,10 +20,8 @@ pipeline {
     } 
       stage('Docker push') {
       agent any
-      steps {
-        def server = Artifactory.server 'art-1'
+      def server = Artifactory.server 'art-1'
         def buildInfo = rtDocker.push 'roadtomoon/exrates-auth-service:latest', 'http://172.50.50.9:8081/artifactory/docker-local/'
-      }   
     }
     stage('Deploy container') {
       steps {
