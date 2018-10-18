@@ -20,7 +20,7 @@ pipeline {
     } 
     stage('Deploy container') {
       steps {
-        sh 'docker -H tcp://172.50.10.115:2375 service update --image localhost:5000/authservice:latest auth-service'
+        sh 'docker -H tcp://localhost:2375 service update --image localhost:5000/authservice:latest auth-service'
       }
     }
   }  
