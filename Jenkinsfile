@@ -20,7 +20,7 @@ pipeline {
     } 
     stage('Deploy container') {
       steps {
-        sh 'docker -H tcp://ip-172-50-10-115:2375 service create roadtomoon/exrates-auth-service:latest'
+        sh 'docker -H tcp://172.50.10.115:2375 service create roadtomoon/exrates-auth-service:latest'
       }
     }
   }  
