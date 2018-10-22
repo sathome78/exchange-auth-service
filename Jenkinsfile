@@ -3,7 +3,7 @@ pipeline {
   agent any
   
    environment {
-     ENVIRONMENT = '${EVN}'
+     ENVIRONMENT = '${params.DEPLOY_ENV}'
     }
   
   stages {
