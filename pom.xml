@@ -121,6 +121,16 @@
 				</configuration>
 			</plugin>
 		</plugins>
+
+		<!--<resources>-->
+		<!--<resource>-->
+		<!--<directory>${project.basedir}</directory>&lt;!&ndash; from &ndash;&gt;-->
+		<!--<targetPath>${project.build.directory}</targetPath>&lt;!&ndash; to &ndash;&gt;-->
+		<!--<includes>&lt;!&ndash; what &ndash;&gt;-->
+		<!--<include>config/**</include>-->
+		<!--</includes>-->
+		<!--</resource>-->
+		<!--</resources>-->
 	</build>
 
 	<repositories>

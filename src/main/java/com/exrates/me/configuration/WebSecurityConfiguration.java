@@ -30,12 +30,10 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
         return new BCryptPasswordEncoder();
     }
 
-
     @Override
     public void configure(WebSecurity web) {
-        web.ignoring().antMatchers("/webjars/**","/resources/**");
+        web.ignoring().antMatchers("/webjars/**","/resources/**","/swagger-resources/**","/api/**","/swagger-ui.html");
     }
-
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
@@ -58,8 +56,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(detailService)
-        .passwordEncoder(passwordEncoder());
+                .passwordEncoder(passwordEncoder());
     }
-
 
 }
