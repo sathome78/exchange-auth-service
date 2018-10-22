@@ -5,13 +5,15 @@ spring:
             minimum-idle: 1
             maximum-pool-size: 5
         driver-class-name: com.mysql.jdbc.Driver
-        jdbc-url: jdbc:mysql://exdbdev.cedlveyttji9.us-east-2.rds.amazonaws.com:3306/dbdev1?useSSL=false
+        jdbc-url: jdbc:mysql://exdbdev.cedlveyttji9.us-east-2.rds.amazonaws.com:3306/birzha?useSSL=false
         username: exdevdb
         password: KQmK82dd
         initialization-mode: always
     jpa:
       hibernate:
         ddl-auto: none
+      database-platform: org.hibernate.dialect.MySQL5Dialect
+      database: mysql
     profiles:
       active: container
     redis:

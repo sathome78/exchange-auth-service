@@ -14,3 +14,5 @@ echo $ARTIFACT_PATH
 cd $DOCKER_DEPLOY_DIRECTORY
 
 docker build -t authorization_service --build-arg ENVIRONMENT=${ENVIRONMENT_VARIABLE} .
+
+docker run -p 80:8080 authorization_service:latest

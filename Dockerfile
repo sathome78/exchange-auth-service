@@ -5,10 +5,8 @@ ARG ENVIRONMENT
 
 RUN mkdir -p exrates-auth-service
 COPY ./target/authorization-service.jar ${APP_PATH}/authorization-service.jar
-COPY ./target/config/dev/application.yml ${APP_PATH}/application.yml
-ARG CONFIG_FILE_PATH="-Dspring.config.location="${ENVIRONMENT}"/application.yml"
-
+COPY ./target/config/${ENVIRONMENT}/application.yml ${APP_PATH}/application.yml
 WORKDIR ${APP_PATH}
 
 EXPOSE 8080
-CMD java -jar authorization-service.jar $CONFIG_FILE_PATH
+CMD java -jar authorization-service.jar --spring.config.location=application.yml
