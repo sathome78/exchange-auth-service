@@ -36,6 +36,11 @@ spring:
           tags: authentication-service
           service-name: authentication-service
           port: 8080
+    thymeleaf:
+      cache: false
+      enabled: true
+      prefix: classpath:/templates/
+      suffix: .html
 # --- server
 server:
   port: 8080

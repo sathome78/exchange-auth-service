@@ -37,6 +37,11 @@ spring:
           service-name: authentication-service
           port: 8080
           instance-id: ${spring.application.name}-${random.uuid}
+    thymeleaf:
+      cache: false
+      enabled: true
+      prefix: classpath:/templates/
+      suffix: .html
 # --- server
 server:
   port: 8080
@@ -51,4 +56,3 @@ management:
       enabled: false
     info:
       enabled: true
-
