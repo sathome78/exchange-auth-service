@@ -3,7 +3,7 @@ pipeline {
   agent any
   
    environment {
-        ENVIRONMENT = '/dev/'
+     ENVIRONMENT = '${ENVIRONMENT}'
     }
   
   stages {
