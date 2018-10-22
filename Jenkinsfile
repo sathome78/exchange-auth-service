@@ -1,7 +1,7 @@
 pipeline {
   
   environment {
-        ENVIRONMENT = 'dev'
+        ENVIRONMENT = '/dev/'
     }
   
   agent any
