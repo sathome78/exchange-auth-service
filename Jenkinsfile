@@ -2,10 +2,6 @@ pipeline {
   
   agent any
   
-   environment {
-     ENVIRONMENT = 'dev'
-    }
-  
   stages {
     stage('Maven Install') {
       agent {
@@ -20,8 +16,7 @@ pipeline {
     stage('Docker Build') {
       agent any
       steps {
-        sh 'printenv'
-        sh 'docker build -t roadtomoon/exrates-auth-service:latest .'
+        sh 'docker build --build-arg ENVIRONMENT -t roadtomoon/exrates-auth-service:latest .'
       }
     } 
     stage('Docker pull') {
