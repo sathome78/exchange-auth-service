@@ -16,7 +16,6 @@ pipeline {
     stage('Docker Build') {
       agent any
       steps {
-        sh 'printenv'
         sh 'docker build --build-arg ENVIRONMENT -t roadtomoon/exrates-auth-service:latest .'
       }
     } 
