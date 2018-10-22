@@ -1,10 +1,11 @@
 pipeline {
   
-  environment {
+  agent any
+  
+   environment {
         ENVIRONMENT = '/dev/'
     }
   
-  agent any
   stages {
     stage('Maven Install') {
       agent {
