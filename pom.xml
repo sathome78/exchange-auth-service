@@ -46,10 +46,10 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>
 		</dependency>
-		<!--<dependency>-->
-			<!--<groupId>org.springframework.boot</groupId>-->
-			<!--<artifactId>spring-boot-starter-thymeleaf</artifactId>-->
-		<!--</dependency>-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-thymeleaf</artifactId>
+		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
@@ -142,15 +142,9 @@
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
-			<dependency>
-				<groupId>org.springframework.cloud</groupId>
-				<artifactId>spring-cloud-consul-dependencies</artifactId>
-				<version>2.0.1.RELEASE</version>
-				<type>pom</type>
-				<scope>import</scope>
-			</dependency>
 		</dependencies>
 	</dependencyManagement>
+
 
 	<build>
 		<plugins>
@@ -163,32 +157,7 @@
 					<mainClass>com.exrates.me.AuthorizationServerApplication</mainClass>
 				</configuration>
 			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.7.0</version>
-				<configuration>
-					<source>1.8</source>
-					<compilerVersion>1.8</compilerVersion>
-				</configuration>
-			</plugin>
 		</plugins>
-		<resources>
-			<resource>
-				<directory>${project.basedir}</directory><!-- from -->
-				<targetPath>${project.build.directory}</targetPath><!-- to -->
-				<includes><!-- what -->
-					<include>config/**</include>
-				</includes>
-			</resource>
-            <resource>
-				<directory>${project.basedir}</directory>
-				<targetPath>${project.build.directory}</targetPath>
-				<includes>
-					<include>src/main/resources/**</include>
-				</includes>
-			</resource>
-		</resources>
 	</build>
 
 	<repositories>

@@ -4,7 +4,7 @@ import org.springframework.beans.propertyeditors.CustomCollectionEditor;
 
 import java.util.Collection;
 
-public class SplitCollectionEditor extends CustomCollectionEditor{
+public class SplitCollectionEditor extends CustomCollectionEditor {
 
     private final Class<? extends Collection> collectionType;
     private final String splitRegex;

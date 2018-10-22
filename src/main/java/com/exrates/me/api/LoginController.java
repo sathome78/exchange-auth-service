@@ -1,6 +1,5 @@
 package com.exrates.me.api;
 
-import com.exrates.me.domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -18,11 +17,11 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.security.Principal;
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+
 import static java.util.Arrays.asList;
 
 @Controller
@@ -41,10 +40,10 @@ public class LoginController {
                 .flatMap(Collection::stream)
                 .collect(Collectors.toList());
 
+
         model.put("approvals",approvals);
         model.put("clientDetails",clientDetailsService.listClientDetails());
-
-        return new ModelAndView ("index",model);
+        return new ModelAndView("index",model);
 
     }
 

@@ -37,7 +37,7 @@ CREATE TABLE if not exists authority (
   authority varchar(255),
   primary key (id)
 );
--- --
+
 CREATE TABLE if not exists credentials (
   id  integer,
   enabled boolean not null,
@@ -61,3 +61,5 @@ create table if not exists oauth_approvals (
     expiresAt DATETIME,
     lastModifiedAt DATETIME
 );
+
+
