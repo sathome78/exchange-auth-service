@@ -21,7 +21,7 @@ pipeline {
       agent any
       steps {
         sh 'printenv'
-        sh 'docker build --build-arg var_name=${ENVIRONMENT} -t roadtomoon/exrates-auth-service:latest .'
+        sh 'docker build --build-arg var_name -t roadtomoon/exrates-auth-service:latest .'
       }
     } 
     stage('Docker pull') {
