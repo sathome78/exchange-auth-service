@@ -21,6 +21,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+
 import static java.util.Arrays.asList;
 
 @Controller
@@ -42,7 +43,7 @@ public class LoginController {
 
         model.put("approvals",approvals);
         model.put("clientDetails",clientDetailsService.listClientDetails());
-        return new ModelAndView ("index",model);
+        return new ModelAndView("index",model);
 
     }
 

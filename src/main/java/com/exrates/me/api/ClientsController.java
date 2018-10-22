@@ -68,7 +68,7 @@ public class ClientsController {
     }
 
     @RequestMapping(value="{client.clientId}/delete",method = RequestMethod.POST)
-    public String deleteClient(@ModelAttribute BaseClientDetails ClientDetails,@PathVariable("client.clientId") String id){
+    public String deleteClient(@ModelAttribute BaseClientDetails ClientDetails, @PathVariable("client.clientId") String id){
         clientsDetailsService.removeClientDetails(clientsDetailsService.loadClientByClientId(id).toString());
         return "redirect:/";
     }
