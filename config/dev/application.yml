@@ -5,9 +5,9 @@ spring:
             minimum-idle: 1
             maximum-pool-size: 5
         driver-class-name: com.mysql.jdbc.Driver
-        jdbc-url: jdbc:mysql://localhost:3306/birzha?useSSL=false
-        username: root
-        password: root
+        jdbc-url: jdbc:mysql://exdbdev.cedlveyttji9.us-east-2.rds.amazonaws.com:3306/birzha?useSSL=false
+        username: exdevdb
+        password: KQmK82dd
         initialization-mode: always
     jpa:
       hibernate:
