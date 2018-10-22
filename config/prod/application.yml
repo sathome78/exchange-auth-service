@@ -42,15 +42,3 @@ spring:
 # --- server
 server:
   port: 8080
-
-management:
-  endpoint:
-    metrics:
-      enabled: true
-    logfile:
-      enabled: true
-    shutdown:
-      enabled: false
-    info:
-      enabled: true
-

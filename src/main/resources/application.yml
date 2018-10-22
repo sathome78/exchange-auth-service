@@ -42,4 +42,3 @@ spring:
 # --- server
 server:
   port: 8080
-
