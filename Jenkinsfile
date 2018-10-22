@@ -2,10 +2,6 @@ pipeline {
   
   agent any
   
-   environment {
-     ENVIRONMENT = '${params.DEPLOY_ENV}'
-    }
-  
   stages {
     stage('Maven Install') {
       agent {
