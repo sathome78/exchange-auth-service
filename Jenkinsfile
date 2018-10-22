@@ -1,5 +1,12 @@
 pipeline {
   
+  environment {
+        ENVIRONMENT = ' dev,
+                    test,
+                    preprod,
+                    prod'
+    }
+  
   agent any
   stages {
     stage('Maven Install') {
