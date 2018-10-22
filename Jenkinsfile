@@ -1,10 +1,7 @@
 pipeline {
   
   environment {
-        ENVIRONMENT = ' dev,
-                    test,
-                    preprod,
-                    prod'
+        ENVIRONMENT = 'dev'
     }
   
   agent any
