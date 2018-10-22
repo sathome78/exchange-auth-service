@@ -1,5 +1,3 @@
-
-
 FROM java:8
 VOLUME /tmp
 ARG APP_PATH=/exrates-auth-service
