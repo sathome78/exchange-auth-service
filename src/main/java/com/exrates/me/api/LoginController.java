@@ -32,8 +32,8 @@ public class LoginController {
 
     @Autowired
     private ApprovalStore approvalStore;
-//    @RequestMapping("/")
-//    @PreAuthorize("hasRole('SUPER_ADMIN')")
+    @RequestMapping("/")
+    @PreAuthorize("hasRole('SUPER_ADMIN')")
     public ModelAndView root(Map<String,Object> model, Principal principal){
 
 
@@ -52,7 +52,7 @@ public class LoginController {
     @Autowired
     private TokenStore tokenStore;
 
-//    @RequestMapping(value="/approval/revoke",method= RequestMethod.POST)
+    @RequestMapping(value="/approval/revoke",method= RequestMethod.POST)
     public String revokApproval(@ModelAttribute Approval approval){
 
         approvalStore.revokeApprovals(asList(approval));
