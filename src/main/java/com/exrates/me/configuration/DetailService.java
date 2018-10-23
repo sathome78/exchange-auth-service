@@ -36,15 +36,16 @@ public class DetailService implements UserDetailsService {
     private UserDetails getUserFromDb(String login) {
         try {
             com.exrates.me.domain.User user = userRepository.findByemail(login);
-            return builder().
+            UserDetails build = builder().
                     username(login).
                     password(user.getPassword()).
-                    disabled(ifUserAllowed(user.getStatus())).
+                    disabled(!ifUserAllowed(user.getStatus())).
                     accountExpired(false).
                     credentialsExpired(false).
                     accountLocked(false).
                     authorities(getAuthorities(login)).
                     build();
+            return build;
         } catch (Exception e) {
             throw new UsernameNotFoundException("Несуществующий логин");
         }
@@ -56,6 +57,6 @@ public class DetailService implements UserDetailsService {
     }
 
     private boolean ifUserAllowed(int status) {
-        return status != 2 && status != 4;
+        return status == 2 || status == 4;
     }
 }
