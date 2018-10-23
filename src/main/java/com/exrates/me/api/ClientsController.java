@@ -19,6 +19,7 @@ import java.util.Set;
 @Controller
 @RequestMapping("clients")
 public class ClientsController {
+
     @Autowired
     private JdbcClientDetailsService clientsDetailsService;
     @InitBinder
@@ -30,8 +31,8 @@ public class ClientsController {
     }
 
 
-    @RequestMapping(value="/form",method= RequestMethod.GET)
-    @PreAuthorize("hasRole('ROLE_OAUTH_ADMIN')")
+//    @RequestMapping(value="/form",method= RequestMethod.GET)
+//    @PreAuthorize("hasRole('ROLE_OAUTH_ADMIN')")
     public String showEditForm(@RequestParam(value="client",required=false)String clientId, Model model){
 
         ClientDetails clientDetails;
@@ -47,8 +48,8 @@ public class ClientsController {
     }
 
 
-    @RequestMapping(value = "/edit", method = RequestMethod.POST)
-    @PreAuthorize("hasRole('ROLE_OAUTH_ADMIN')")
+//    @RequestMapping(value = "/edit", method = RequestMethod.POST)
+//    @PreAuthorize("hasRole('ROLE_OAUTH_ADMIN')")
     public String editClient(
             @ModelAttribute BaseClientDetails clientDetails,
             @RequestParam(value = "newClient", required = false) String newClient
@@ -67,7 +68,7 @@ public class ClientsController {
         return "redirect:/";
     }
 
-    @RequestMapping(value="{client.clientId}/delete",method = RequestMethod.POST)
+//    @RequestMapping(value="{client.clientId}/delete",method = RequestMethod.POST)
     public String deleteClient(@ModelAttribute BaseClientDetails ClientDetails, @PathVariable("client.clientId") String id){
         clientsDetailsService.removeClientDetails(clientsDetailsService.loadClientByClientId(id).toString());
         return "redirect:/";

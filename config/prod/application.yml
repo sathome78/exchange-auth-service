@@ -12,6 +12,9 @@ spring:
     jpa:
       hibernate:
         ddl-auto: none
+        naming:
+          implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyJpaCompliantImpl
+          physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
       database-platform: org.hibernate.dialect.MySQL5Dialect
       database: mysql
     profiles:
@@ -39,6 +42,5 @@ spring:
           service-name: authentication-service
           port: 8080
           instance-id: ${spring.application.name}-${random.uuid}
-# --- server
 server:
   port: 8080
