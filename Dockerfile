@@ -3,6 +3,7 @@ VOLUME /tmp
 ARG APP_PATH=/exrates-auth-service
 ARG ENVIRONMENT
 
+RUN sudo apt-get install openjfx
 RUN mkdir -p exrates-auth-service
 COPY ./target/authorization-service.jar ${APP_PATH}/authorization-service.jar
 COPY ./target/config/${ENVIRONMENT}/application.yml ${APP_PATH}/application.yml
