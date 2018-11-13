@@ -21,12 +21,10 @@ import static org.springframework.security.core.userdetails.User.builder;
 @Primary
 public class DetailService implements UserDetailsService {
 
-    private UserRepository userRepository;
 
     @Autowired
-    public void setUserRepository(UserRepository userRepository) {
-        this.userRepository = userRepository;
-    }
+    private UserRepository userRepository;
+
 
     @Cacheable(value = "loadUserByName", key = "#login")
     public UserDetails loadUserByUsername(String login) throws UsernameNotFoundException {
