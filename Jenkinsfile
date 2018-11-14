@@ -16,19 +16,19 @@ pipeline {
     stage('Docker Build') {
       agent any
       steps {
-        sh 'docker build --build-arg ENVIRONMENT -t roadtomoon/exrates-auth-service:latest .'
+        sh 'docker build --build-arg ENVIRONMENT -t roadtomoon/exrates-auth-service:ENVIRONMENT .'
       }
     } 
     stage('Docker pull') {
       agent any
       steps {
-        sh 'docker tag roadtomoon/exrates-auth-service:latest localhost:5000/authservice:latest'
-        sh 'docker push localhost:5000/authservice:latest'
+        sh 'docker tag roadtomoon/exrates-auth-service:ENVIRONMENT localhost:5000/authservice:ENVIRONMENT'
+        sh 'docker push localhost:5000/authservice:ENVIRONMENT'
       }
     } 
     stage('Deploy container') {
       steps {
-        sh 'docker -H tcp://localhost:2375 service update --image localhost:5000/authservice:latest auth-service'
+        sh 'docker -H tcp://localhost:2375 service update --image localhost:5000/authservice:ENVIRONMENT ENVIRONMENT-auth-service'
       }
     }
   }  
