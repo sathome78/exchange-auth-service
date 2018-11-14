@@ -5,7 +5,7 @@ spring:
             minimum-idle: 1
             maximum-pool-size: 10
         driver-class-name: com.mysql.jdbc.Driver
-        jdbc-url: jdbc:mysql://exdbdev.cedlveyttji9.us-east-2.rds.amazonaws.com:3306/devqa1?useSSL=false
+        jdbc-url: jdbc:mysql://exdbqa.cedlveyttji9.us-east-2.rds.amazonaws.com:3306/dbqa1?useSSL=false
         username: exmicro
         ssm-path: /exrates/auth-service/test/mysql.token
         initialization-mode: always
