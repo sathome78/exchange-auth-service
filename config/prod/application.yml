@@ -5,9 +5,9 @@ spring:
             minimum-idle: 1
             maximum-pool-size: 10
         driver-class-name: com.mysql.jdbc.Driver
-        jdbc-url: jdbc:mysql://exdbdev.cedlveyttji9.us-east-2.rds.amazonaws.com:3306/dbdev1?useSSL=false
-        username: exdevdb
-        ssm-path: /exrates/auth-service/dev/mysql.token
+        jdbc-url: jdbc:mysql://exprod-read-replica-new.cedlveyttji9.us-east-2.rds.amazonaws.com:3306/birzha?useSSL=false
+        username: devprod
+        ssm-path: /exrates/auth-service/prod/mysql.token
         initialization-mode: always
     jpa:
       hibernate:
