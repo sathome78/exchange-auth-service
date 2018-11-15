@@ -48,7 +48,7 @@ public class DatabaseConfiguration {
     @Primary
     @ConfigurationProperties(prefix = "spring.datasource")
     public DataSource dataSource() {
-
+        log.info("SSM PATH is " + password);
         String lookup = ssmGetter.lookup(password);
         HikariDataSource hikariDataSource = new HikariDataSource();
         hikariDataSource.setPassword(lookup);
@@ -58,7 +58,7 @@ public class DatabaseConfiguration {
         hikariDataSource.setDriverClassName(driverClassName);
         hikariDataSource.setMaximumPoolSize(maximumPoolSize);
         hikariDataSource.setMinimumIdle(minimumidle);
-
+        log.info("Username " + dbUsername + ". Password = " + lookup + ". JDBC-URL " + jdbcUrl);
         return hikariDataSource;
     }
 
