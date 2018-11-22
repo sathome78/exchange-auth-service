@@ -6,7 +6,7 @@ spring:
             maximum-pool-size: 10
         driver-class-name: com.mysql.jdbc.Driver
         jdbc-url: jdbc:mysql://ex-replica.cedlveyttji9.us-east-2.rds.amazonaws.com:3306/birzha?useSSL=false
-        username: devprod
+        username: authuser
         ssm-path: /exrates/auth-service/prod/mysql.token
         initialization-mode: always
     jpa:
