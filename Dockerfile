@@ -5,6 +5,7 @@ ARG ENVIRONMENT
 
 RUN mkdir -p exrates-auth-service
 COPY ./target/authorization-service.jar ${APP_PATH}/authorization-service.jar
+RUN echo ${ENVIRONMENT}
 COPY ./target/config/${ENVIRONMENT}/application.yml ${APP_PATH}/application.yml
 WORKDIR ${APP_PATH}
 RUN readlink -f application.yml
