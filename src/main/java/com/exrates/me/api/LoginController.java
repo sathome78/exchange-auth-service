@@ -59,7 +59,7 @@ public class LoginController {
 
     @RequestMapping("/login")
     public String loginPage() {
-        return "login.html";
+        return "login";
     }
 
     @RequestMapping(value="/logout", method = RequestMethod.GET)

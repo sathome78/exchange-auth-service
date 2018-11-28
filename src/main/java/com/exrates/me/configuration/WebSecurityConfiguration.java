@@ -48,10 +48,8 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .usernameParameter("username")
                 .passwordParameter("password")
                 .loginPage("/login")
-                .failureUrl("/login")
                 .and()
                 .logout()
-                .logoutSuccessUrl("/login")
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout.do"))
                 .and()
                 .userDetailsService(userDetailsServiceBean());
