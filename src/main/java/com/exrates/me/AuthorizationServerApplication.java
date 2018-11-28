@@ -12,8 +12,6 @@ import org.springframework.data.redis.repository.configuration.EnableRedisReposi
 @Configuration
 @EnableJpaRepositories(basePackages = {"com.exrates.me.domain", "com.exrates.me.repository"})
 @EnableRedisRepositories
-@EnableDiscoveryClient
-
 public class AuthorizationServerApplication {
 
     public static void main(String[] args) {
