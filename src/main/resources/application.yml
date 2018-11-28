@@ -1,53 +1,58 @@
-spring:
-    datasource:
-        hikari:
-            connection-test-query: SELECT 1 FROM DUAL
-            minimum-idle: 1
-            maximum-pool-size: 10
-        driver-class-name: com.mysql.jdbc.Driver
-        jdbc-url: jdbc:mysql://exdbdev.cedlveyttji9.us-east-2.rds.amazonaws.com:3306/dbdev1?useSSL=false
-        username: exmicro
-        ssm-path: vLHjSkPJjB6JLVcA
-        initialization-mode: always
-    jpa:
-      hibernate:
-        ddl-auto: none
-        naming:
-          implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyJpaCompliantImpl
-          physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
-      database-platform: org.hibernate.dialect.MySQL5Dialect
-      database: mysql
-      properties:
-        hibernate:
-          show_sql: true
-          use_sql_comments: true
-          format_sql: true
-          type: trace
-    profiles:
-      active: container
-    redis:
-      host: 172.10.10.236
-      port: 6379
-    application:
-      name: auth-server
-    cloud:
-      consul:
-        port: 8500
-        host: 172.50.10.5
-        enabled: true
-        discovery:
-          enabled: true
-          lifecycle:
-            enabled: true
-          heartbeat:
-            enabled: true
-            interval-ratio: 0.1
-          health-check-timeout: 3s
-          health-check-interval: 3ss
-          tags: authentication-service
-          service-name: authentication-service
-          port: 8080
-          instance-id: ${spring.application.name}-${random.uuid}
 # --- server
 server:
   port: 8080
+
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  profiles:
+    active: container
+  application:
+    admin:
+      enabled: true
+    name: auth-service
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    jdbc-url: jdbc:mysql://exdbdev.cedlveyttji9.us-east-2.rds.amazonaws.com:3306/dbdev1?useSSL=false
+    username: exmicro
+    ssm-path: vLHjSkPJjB6JLVcA
+    initialization-mode: always
+    hikari:
+      connection-test-query: SELECT 1 FROM DUAL
+      minimum-idle: 1
+      maximum-pool-size: 10
+  jpa:
+    hibernate:
+      ddl-auto: none
+      naming:
+        implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyJpaCompliantImpl
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    database-platform: org.hibernate.dialect.MySQL5Dialect
+    database: mysql
+    properties:
+      hibernate:
+        show_sql: true
+        use_sql_comments: true
+        format_sql: true
+        type: trace
+  redis:
+    host: 172.10.10.236
+    port: 6379
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${EUREKA_URI:http://localhost:8080/eureka}
+    should-unregister-on-shutdown: true
+  instance:
+    preferIpAddress: true
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: ALWAYS

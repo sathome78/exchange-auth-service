@@ -39,6 +39,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
         http
                 .authorizeRequests()
                 .antMatchers("/login","/logout.do").permitAll()
+                .antMatchers("/actuator/**").permitAll()
                 .antMatchers("/**").authenticated()
                 .and()
                 .formLogin()
@@ -50,7 +51,8 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .logout()
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout.do"))
                 .and()
-                .userDetailsService(userDetailsServiceBean());
+                .userDetailsService(userDetailsServiceBean())
+        .csrf().disable();
     }
 
     @Override

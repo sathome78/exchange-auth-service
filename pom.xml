@@ -14,7 +14,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.0.5.RELEASE</version>
+		<version>2.1.0.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 
@@ -141,6 +141,11 @@
 			<version>${aws-java-sdk.version}</version>
 		</dependency>
 
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+			<version>2.0.1.RELEASE</version>
+		</dependency>
 	</dependencies>
 
 	<dependencyManagement>
@@ -192,15 +197,15 @@
 			</plugin>
 		</plugins>
 
-		<!--<resources>-->
-		<!--<resource>-->
-		<!--<directory>${project.basedir}</directory>&lt;!&ndash; from &ndash;&gt;-->
-		<!--<targetPath>${project.build.directory}</targetPath>&lt;!&ndash; to &ndash;&gt;-->
-		<!--<includes>&lt;!&ndash; what &ndash;&gt;-->
-		<!--<include>config/**</include>-->
-		<!--</includes>-->
-		<!--</resource>-->
-		<!--</resources>-->
+		<resources>
+			<resource>
+				<directory>${project.basedir}</directory><!-- from -->
+				<targetPath>${project.build.directory}</targetPath><!-- to -->
+				<includes><!-- what -->
+					<include>config/**</include>
+				</includes>
+			</resource>
+		</resources>
 	</build>
 
 	<repositories>
@@ -221,7 +226,4 @@
 			</snapshots>
 		</repository>
 	</repositories>
-
-
-
 </project>
