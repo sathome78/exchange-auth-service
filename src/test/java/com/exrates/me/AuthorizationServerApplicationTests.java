@@ -10,8 +10,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 
-//@RunWith(SpringRunner.class)
-//@SpringBootTest
+@RunWith(SpringRunner.class)
+@SpringBootTest
 public class AuthorizationServerApplicationTests {
 
 	@Test
@@ -24,7 +24,4 @@ public class AuthorizationServerApplicationTests {
 		String encode = URLEncoder.encode("http://localhost:8080/oauth/token?grant_type=password&username=iamlukashenko+u1@gmail.com&password=aa11223344", "UTF-8");
 		System.out.println(encode);
 	}
-
-
-
 }
