@@ -7,6 +7,5 @@ RUN mkdir -p exrates-auth-service
 COPY ./target/authorization-service.jar ${APP_PATH}/authorization-service.jar
 COPY ./target/config/${ENVIRONMENT}/application.yml ${APP_PATH}/application.yml
 WORKDIR ${APP_PATH}
-RUN readlink -f application.yml
 EXPOSE 8080
-CMD java -jar authorization-service.jar
+CMD java -jar authorization-service.jar --spring.config.location=application.yml
