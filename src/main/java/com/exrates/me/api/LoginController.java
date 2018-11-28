@@ -27,21 +27,21 @@ import static java.util.Arrays.asList;
 
 @Controller
 public class LoginController {
-    @Autowired
-    private JdbcClientDetailsService clientDetailsService;
 
     @Autowired
+    private JdbcClientDetailsService clientDetailsService;
+    @Autowired
     private ApprovalStore approvalStore;
+    @Autowired
+    private TokenStore tokenStore;
+
     @RequestMapping("/")
     @PreAuthorize("hasRole('SUPER_ADMIN')")
     public ModelAndView root(Map<String,Object> model, Principal principal){
-
-
         List<Approval> approvals=clientDetailsService.listClientDetails().stream()
                 .map(clientDetails -> approvalStore.getApprovals(principal.getName(),clientDetails.getClientId()))
                 .flatMap(Collection::stream)
                 .collect(Collectors.toList());
-
 
         model.put("approvals",approvals);
         model.put("clientDetails",clientDetailsService.listClientDetails());
@@ -49,12 +49,8 @@ public class LoginController {
 
     }
 
-    @Autowired
-    private TokenStore tokenStore;
-
     @RequestMapping(value="/approval/revoke",method= RequestMethod.POST)
     public String revokApproval(@ModelAttribute Approval approval){
-
         approvalStore.revokeApprovals(asList(approval));
         tokenStore.findTokensByClientIdAndUserName(approval.getClientId(),approval.getUserId())
                 .forEach(tokenStore::removeAccessToken) ;
@@ -63,10 +59,8 @@ public class LoginController {
 
     @RequestMapping("/login")
     public String loginPage() {
-        return "login";
+        return "login.html";
     }
-
-
 
     @RequestMapping(value="/logout", method = RequestMethod.GET)
     public String logoutPage (HttpServletRequest request, HttpServletResponse response) {
