@@ -20,61 +20,45 @@ import java.util.Properties;
 @Log4j2
 public class DatabaseConfiguration {
 
-//    @Value("${spring.datasource.username}")
-//    private String dbUsername;
-//
-//    @Value("${spring.datasource.jdbc-url}")
-//    private String jdbcUrl;
-//
-//    @Value("${spring.datasource.hikari.connection-test-query}")
-//    private String connectionTestQuery;
-//
-//    @Value("${spring.datasource.driver-class-name}")
-//    private String driverClassName;
-//
-//    @Value("${spring.datasource.hikari.maximum-pool-size}")
-//    private int maximumPoolSize;
-//
-//    @Value("${spring.datasource.hikari.minimum-idle}")
-//    private int minimumidle;
-//
-//    @Value("${spring.datasource.ssm-path}")
-//    private String password;
+    @Value("${spring.datasource.username}")
+    private String dbUsername;
 
-//    @Autowired
-//    SSMGetter ssmGetter;
+    @Value("${spring.datasource.jdbc-url}")
+    private String jdbcUrl;
 
-//    @Bean
-//    @Primary
-//    @ConfigurationProperties(prefix = "spring.datasource")
-//    public DataSource dataSource() {
-//        log.info("SSM PATH is " + password);
-//        String lookup = ssmGetter.lookup(password);
-//        HikariDataSource hikariDataSource = new HikariDataSource();
-//        hikariDataSource.setPassword(lookup);
-//        hikariDataSource.setUsername(dbUsername);
-//        hikariDataSource.setJdbcUrl(jdbcUrl);
-//        hikariDataSource.setConnectionTestQuery(connectionTestQuery);
-//        hikariDataSource.setDriverClassName(driverClassName);
-//        hikariDataSource.setMaximumPoolSize(maximumPoolSize);
-//        hikariDataSource.setMinimumIdle(minimumidle);
-//        log.info("Username " + dbUsername + ". Password = " + lookup + ". JDBC-URL " + jdbcUrl);
-//        return hikariDataSource;
-//    }
+    @Value("${spring.datasource.hikari.connection-test-query}")
+    private String connectionTestQuery;
+
+    @Value("${spring.datasource.driver-class-name}")
+    private String driverClassName;
+
+    @Value("${spring.datasource.hikari.maximum-pool-size}")
+    private int maximumPoolSize;
+
+    @Value("${spring.datasource.hikari.minimum-idle}")
+    private int minimumidle;
+
+    @Value("${spring.datasource.ssm-path}")
+    private String password;
+
+    @Autowired
+    SSMGetter ssmGetter;
 
     @Bean
     @Primary
     @ConfigurationProperties(prefix = "spring.datasource")
     public DataSource dataSource() {
+        log.info("SSM PATH is " + password);
+        String lookup = ssmGetter.lookup(password);
         HikariDataSource hikariDataSource = new HikariDataSource();
-        hikariDataSource.setPassword("KQmK82dd");
-        hikariDataSource.setUsername("exdevdb");
-        hikariDataSource.setJdbcUrl("jdbc:mysql://exdbdev.cedlveyttji9.us-east-2.rds.amazonaws.com:3306/dbdev1?useSSL=false");
-        hikariDataSource.setConnectionTestQuery("SELECT 1 FROM DUAL");
-        hikariDataSource.setDriverClassName("com.mysql.jdbc.Driver");
-        hikariDataSource.setMaximumPoolSize(10);
-        hikariDataSource.setMinimumIdle(1);
-//        log.info("Username " + dbUsername + ". Password = " + lookup + ". JDBC-URL " + jdbcUrl);
+        hikariDataSource.setPassword(lookup);
+        hikariDataSource.setUsername(dbUsername);
+        hikariDataSource.setJdbcUrl(jdbcUrl);
+        hikariDataSource.setConnectionTestQuery(connectionTestQuery);
+        hikariDataSource.setDriverClassName(driverClassName);
+        hikariDataSource.setMaximumPoolSize(maximumPoolSize);
+        hikariDataSource.setMinimumIdle(minimumidle);
+
         return hikariDataSource;
     }
 

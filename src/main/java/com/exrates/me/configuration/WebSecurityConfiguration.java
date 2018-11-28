@@ -51,8 +51,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .logout()
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout.do"))
                 .and()
-                .userDetailsService(userDetailsServiceBean())
-        .csrf().disable();
+                .userDetailsService(userDetailsServiceBean());
     }
 
     @Override
