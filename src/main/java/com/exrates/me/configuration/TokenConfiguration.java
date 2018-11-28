@@ -51,8 +51,7 @@ public class TokenConfiguration {
         return handler;
     }
 
-    @Bean
-    @Primary
+    @Bean("customClientDetailsService")
     public JdbcClientDetailsService clientDetailsService() {
         return new JdbcClientDetailsService(dataSource);
     }
