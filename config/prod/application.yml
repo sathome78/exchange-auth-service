@@ -1,13 +1,7 @@
-# --- server
-server:
-  port: 8080
-
 spring:
   profiles:
-    active: container
+    active: prod
   application:
-    admin:
-      enabled: true
     name: auth-service
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
