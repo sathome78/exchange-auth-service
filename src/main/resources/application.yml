@@ -3,7 +3,7 @@ server:
 
 spring:
   profiles:
-    active: container
+    active: dev
   application:
     admin:
       enabled: true

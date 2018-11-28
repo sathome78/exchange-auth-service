@@ -38,7 +38,8 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("/login","/logout.do").permitAll()
+                .antMatchers("/login.html").anonymous()
+                .antMatchers("/logout.do").permitAll()
                 .antMatchers("/actuator/**").permitAll()
                 .antMatchers("/**").authenticated()
                 .and()
@@ -46,9 +47,11 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .loginProcessingUrl("/login.do")
                 .usernameParameter("username")
                 .passwordParameter("password")
-                .loginPage("/login")
+                .loginPage("/login.html")
+                .failureUrl("/login.html")
                 .and()
                 .logout()
+                .logoutSuccessUrl("/login.html")
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout.do"))
                 .and()
                 .userDetailsService(userDetailsServiceBean());
