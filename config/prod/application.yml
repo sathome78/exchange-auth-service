@@ -2,6 +2,8 @@ spring:
   profiles:
     active: prod
   application:
+    admin:
+      enabled: true
     name: auth-service
   datasource:
     driver-class-name: com.mysql.jdbc.Driver

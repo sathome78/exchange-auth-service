@@ -1,10 +1,9 @@
-server:
-  port: 8080
-
 spring:
   profiles:
     active: dev
   application:
+    admin:
+      enabled: true
     name: auth-service
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
@@ -42,3 +41,16 @@ eureka:
   instance:
     preferIpAddress: true
     instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: ALWAYS
+
+logging:
+  level:
+    ROOT: debug
