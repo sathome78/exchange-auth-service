@@ -3,8 +3,6 @@ server:
   port: 8080
 
 spring:
-#  main:
-#    allow-bean-definition-overriding: true
   profiles:
     active: container
   application:
@@ -49,10 +47,10 @@ eureka:
     instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
 
 management:
-  endpoints:
-    web:
-      exposure:
-        include: '*'
+#  endpoints:
+#    web:
+#      exposure:
+#        include: '*'
   endpoint:
     health:
       show-details: ALWAYS
