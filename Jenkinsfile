@@ -17,18 +17,6 @@ pipeline {
     stage('Docker Build') {
       agent any     
       steps {
-         script { 
-                 def server = Artifactory.server 'art-1'
-                 def uploadSpec = """{
-                    "files": [{
-                       "pattern": "./target/authorization-service.jar",
-                       "target": "exrates-auth-service/com/aak/authorization_server/"
-                    }]
-                 }"""
-
-                 server.upload(uploadSpec) 
-               }
-            }
         sh 'docker build --build-arg ENVIRONMENT -t roadtomoon/exrates-auth-service:$ENVIRONMENT .'
       }
     } 
