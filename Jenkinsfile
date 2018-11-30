@@ -10,11 +10,26 @@ pipeline {
         }
       }
       steps {
-        sh 'mvn clean install'
+        sh 'mvn clean package'
       }
     }
+    stage('Upload to Atrtifactory') {
+           steps {
+              script { 
+                 def server = Artifactory.server 'art-1'
+                 def uploadSpec = """{
+                    "files": [{
+                       "pattern": "/var/lib/jenkins/workspace/DEV-ex-micro-app-build/ex_micro_app_auth_service@2/target/*.jar",
+                       "target": "exrates-auth-service/"
+                    }]
+                 }"""
+
+                 server.upload(uploadSpec) 
+               }
+            }
+        }
     stage('Docker Build') {
-      agent any
+      agent any     
       steps {
         sh 'docker build -t roadtomoon/exrates-auth-service:$ENVIRONMENT --build-arg ENVIRONMENT .'
       }
