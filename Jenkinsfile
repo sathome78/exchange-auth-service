@@ -20,7 +20,7 @@ pipeline {
                  def uploadSpec = """{
                     "files": [{
                        "pattern": "./target/authorization-service.jar",
-                       "target": "exrates-auth-service/com/aak/authorization_server/"
+                       "target": "exrates-auth-service/"
                     }]
                  }"""
 
