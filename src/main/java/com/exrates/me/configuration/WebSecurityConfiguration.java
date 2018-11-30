@@ -36,28 +36,34 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     }
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http
-                .authorizeRequests()
-                .antMatchers("/login", "/logout.do").permitAll()
-                .antMatchers("/actuator/**").permitAll()
-                .antMatchers("/**").authenticated()
-                .and()
-                .formLogin()
-                .loginProcessingUrl("/login.do")
-                .usernameParameter("username")
-                .passwordParameter("password")
-                .loginPage("/login")
-                .and()
-                .logout()
-                .logoutRequestMatcher(new AntPathRequestMatcher("/logout.do"))
-                .and()
-                .userDetailsService(userDetailsServiceBean());
+//        http
+//                .authorizeRequests()
+//                .antMatchers("/actuator").permitAll()
+//                .antMatchers("/actuator/**").permitAll()
+//                .antMatchers("/login","/logout.do").permitAll()
+//                .antMatchers("/swagger-resources/**").permitAll()
+//                .antMatchers("/swagger-ui.html").permitAll()
+//                .antMatchers("/**").authenticated()
+//                .antMatchers("/api/**").permitAll()
+//                .antMatchers("/v2/**").permitAll()
+//                .and()
+//                .formLogin()
+//                .loginProcessingUrl("/login.do")
+//                .usernameParameter("username")
+//                .passwordParameter("password")
+//                .loginPage("/login")
+//                .and()
+//                .logout()
+//                .logoutRequestMatcher(new AntPathRequestMatcher("/logout.do"))
+//                .and()
+//                .userDetailsService(userDetailsServiceBean());
     }
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(detailService)
-                .passwordEncoder(passwordEncoder());
+        .passwordEncoder(passwordEncoder());
     }
+
 
 }
