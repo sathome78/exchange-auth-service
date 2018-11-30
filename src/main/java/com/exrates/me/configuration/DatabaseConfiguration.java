@@ -48,7 +48,7 @@ public class DatabaseConfiguration {
     @Primary
     @ConfigurationProperties(prefix = "spring.datasource")
     public DataSource dataSource() {
-
+        log.info("SSM PATH is " + password);
         String lookup = ssmGetter.lookup(password);
         HikariDataSource hikariDataSource = new HikariDataSource();
         hikariDataSource.setPassword(lookup);
