@@ -16,7 +16,7 @@ pipeline {
     stage('Docker Build') {
       agent any
       steps {
-        sh 'docker build --build-arg ENVIRONMENT -t roadtomoon/exrates-auth-service:$ENVIRONMENT .'
+        sh 'docker build -t roadtomoon/exrates-auth-service:$ENVIRONMENT --build-arg ENVIRONMENT .'
       }
     } 
     stage('Docker pull') {
