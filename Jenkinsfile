@@ -19,7 +19,7 @@ pipeline {
                  def server = Artifactory.server 'art-1'
                  def uploadSpec = """{
                     "files": [{
-                       "pattern": "target/authorization-service.jar",
+                       "pattern": "target/*.jar",
                        "target": "exrates-auth-service/"
                     }]
                  }"""
