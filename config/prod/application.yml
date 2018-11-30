@@ -20,7 +20,7 @@ spring:
     profiles:
       active: container
     redis:
-      host: 172.10.10.236
+      host: 172.50.50.50
       port: 6379
     application:
       name: auth-server
