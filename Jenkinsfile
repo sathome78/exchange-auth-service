@@ -15,9 +15,9 @@ pipeline {
     }
     
     stage('Docker Build') {
-      agent any
+      agent any     
       steps {
-              script { 
+         script { 
                  def server = Artifactory.server 'art-1'
                  def uploadSpec = """{
                     "files": [{
@@ -29,7 +29,6 @@ pipeline {
                  server.upload(uploadSpec) 
                }
             }
-      steps {
         sh 'docker build --build-arg ENVIRONMENT -t roadtomoon/exrates-auth-service:$ENVIRONMENT .'
       }
     } 
