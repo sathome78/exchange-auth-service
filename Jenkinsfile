@@ -2,13 +2,17 @@ pipeline {
   
   agent any
   stages {
-    stage('Maven Install') {
-      agent any
+     stage('Maven Install') {
+      agent {
+        docker {
+          image 'maven:3.5.4'
+        }
+      }
       steps {
         sh 'mvn clean package'
       }
     }
-  
+ 
   stage('Upload to Atrtifactory') {
            steps {
               script {
@@ -46,4 +50,14 @@ pipeline {
     }
   
   }
+}
+post {
+success {
+slackSend (color: '#00FF00', message: "SUCCESSFUL: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
+ 
+}
+failure {
+slackSend (color: '#FF0000', message: "FAILED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
+ 
+}
 }
