@@ -48,7 +48,6 @@ pipeline {
         sh 'docker -H tcp://localhost:2375 service update --image localhost:5000/authservice:$ENVIRONMENT $ENVIRONMENT-auth-service'
       }
     }
-  }
   post {
 success {
 slackSend (color: '#00FF00', message: "SUCCESSFUL: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
@@ -59,4 +58,6 @@ slackSend (color: '#FF0000', message: "FAILED: Job '${env.JOB_NAME} [${env.BUILD
  
 }
 }
+  
+  }
 }
