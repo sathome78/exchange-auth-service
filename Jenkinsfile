@@ -1,10 +1,5 @@
 pipeline {
   agent any
-    post {
-success {
-  slackSend (color: '#00FF00', message: "BUILD START: Job '${env.JOB_NAME} [EVN: $ENVIRONMENT] [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
-}
-}
   stages {
      stage('Maven Install') {
       agent {
