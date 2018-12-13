@@ -2,14 +2,18 @@ pipeline {
   
   agent any
   
-    stage('Docker Build') {
-      agent any
-      steps {
-        sh 'mvn clean package'
-        sh 'docker build --build-arg ENVIRONMENT -t roadtomoon/exrates-auth-service:$ENVIRONMENT .'
-      }
-    } 
-    stage('Upload to Atrtifactory') {
+   stage ('Build') {
+ 
+    git url: 'https://github.com/cyrille-leclerc/multi-module-maven-project'
+ 
+    withMaven(
+        maven: 'M3',
+        mavenLocalRepo: '.repository') {
+      sh "mvn clean install"
+    }
+  }
+  
+  stage('Upload to Atrtifactory') {
            steps {
               script {
                  def server = Artifactory.server 'art-1'
@@ -24,6 +28,14 @@ pipeline {
                }
             }
         }
+  
+    stage('Docker Build') {
+      agent any
+      steps {
+        sh 'docker build --build-arg ENVIRONMENT -t roadtomoon/exrates-auth-service:$ENVIRONMENT .'
+      }
+    } 
+
     stage('Docker pull') {
       agent any
       steps {
