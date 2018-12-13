@@ -4,8 +4,6 @@ pipeline {
   
    stage ('Build') {
  
-    git url: 'https://github.com/cyrille-leclerc/multi-module-maven-project'
- 
     withMaven(
         maven: 'M3',
         mavenLocalRepo: '.repository') {
