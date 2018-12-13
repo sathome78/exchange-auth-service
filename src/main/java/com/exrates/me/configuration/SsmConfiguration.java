@@ -1,7 +1,9 @@
 package com.exrates.me.configuration;
 
-import me.exrates.SSMGetter;
-import me.exrates.SSMGetterImpl;
+import com.amazonaws.services.simplesystemsmanagement.AWSSimpleSystemsManagement;
+import com.amazonaws.services.simplesystemsmanagement.AWSSimpleSystemsManagementClientBuilder;
+import io.github.nmaslukov.SSMGetter;
+import io.github.nmaslukov.SSMGetterImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
