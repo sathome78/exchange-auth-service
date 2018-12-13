@@ -1,10 +1,15 @@
 pipeline {
   
   agent any
-  stages {
-   stage ('Build') {
-      sh "mvn clean install"
-  }
+   stage('Maven Install') {
+      agent {
+        docker {
+          image 'maven:3.5.4'
+        }
+      }
+      steps {
+        sh 'mvn clean package'
+      }
   
   stage('Upload to Atrtifactory') {
            steps {
