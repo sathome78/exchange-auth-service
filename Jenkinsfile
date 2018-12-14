@@ -5,7 +5,7 @@ pipeline {
       agent {
         docker {
           image 'maven:3.5.4'
-          args '-v ${HOME}/.m2/settings.xml'
+          args '-v ${HOME}/.m2/'
           reuseNode true
         }
       }
