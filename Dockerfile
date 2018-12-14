@@ -16,5 +16,5 @@ COPY ./target/config/${ENVIRONMENT}/application.yml ${APP_PATH}/application.yml
 WORKDIR ${APP_PATH}
 RUN readlink -f application.yml
 EXPOSE 8080
-CMD ["service filebeat start"]
+CMD ["/etc/init.d/filebeat", "start"]
 CMD java -jar authorization-service.jar
