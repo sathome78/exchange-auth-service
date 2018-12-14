@@ -3,7 +3,7 @@ VOLUME /tmp
 ARG APP_PATH=/exrates-auth-service
 ARG ENVIRONMENT
 
-RUN curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-6.5.3-amd64.deb
+RUN curl -L -O http://172.50.50.9:8081/artifactory/elk-libs/filebeat-6.5.3-amd64.deb
 RUN dpkg -i filebeat-6.5.3-amd64.deb && rm -f filebeat-6.5.3-amd64.deb
 
 RUN mkdir -p exrates-auth-service
