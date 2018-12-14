@@ -29,6 +29,13 @@ pipeline {
                }
             }
         }
+    
+    stage('Docker Build') {
+      agent any
+      steps {
+        sh 'docker build --build-arg ENVIRONMENT -t roadtomoon/exrates-auth-service:$ENVIRONMENT .'
+      }
+    } 
 
     stage('Docker pull') {
       agent any
