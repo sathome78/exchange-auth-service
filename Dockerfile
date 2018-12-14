@@ -16,4 +16,3 @@ WORKDIR ${APP_PATH}
 RUN readlink -f application.yml
 EXPOSE 8080
 CMD java -jar authorization-service.jar
-CMD service filebeat restart
