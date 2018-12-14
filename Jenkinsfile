@@ -46,7 +46,7 @@ pipeline {
   }
   post {
 success {
-  slackSend (color: '#00FF00', message: "SUCCESSFUL: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}] / [EVN: $ENVIRONMENT | BARNCH: $BRANCH]' (${env.BUILD_URL})")
+  slackSend (color: '#00FF00', message: "SUCCESSFUL: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}] / [EVN: $ENVIRONMENT | BRANCH: $BRANCH]' (${env.BUILD_URL})")
  
 }
 failure {
