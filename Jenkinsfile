@@ -2,7 +2,7 @@ pipeline {
   agent any
   stages {
      stage ('Build') {
- 
+      steps {
        withMaven(
         // Maven installation declared in the Jenkins "Global Tool Configuration"
         maven: 'M3',
@@ -16,7 +16,7 @@ pipeline {
  
     } // withMaven will discover the generated Maven artifacts, JUnit Surefire & FailSafe & FindBugs reports...
   }
- 
+     }
   stage('Upload to Atrtifactory') {
            steps {
               script {
