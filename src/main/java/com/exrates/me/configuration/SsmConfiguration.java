@@ -1,7 +1,7 @@
 package com.exrates.me.configuration;
 
-import me.exrates.SSMGetter;
-import me.exrates.SSMGetterImpl;
+import com.amazonaws.services.simplesystemsmanagement.AWSSimpleSystemsManagement;
+import com.amazonaws.services.simplesystemsmanagement.AWSSimpleSystemsManagementClientBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Configuration;
 public class SsmConfiguration {
 
     @Bean
-    public SSMGetter ssmGetter() {
-        return new SSMGetterImpl();
+    public AWSSimpleSystemsManagement awsSimpleSystemsManagement() {
+        return AWSSimpleSystemsManagementClientBuilder.defaultClient();
     }
 }

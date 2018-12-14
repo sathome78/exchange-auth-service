@@ -1,5 +1,6 @@
 package com.exrates.me.configuration;
 
+import com.exrates.me.util.SSMGetter;
 import com.zaxxer.hikari.HikariDataSource;
 import lombok.extern.log4j.Log4j2;
 import me.exrates.SSMGetter;
