@@ -4,7 +4,7 @@ pipeline {
      stage('Maven Install') {
       agent {
         docker {
-          image 'maven:3.7.0'
+          image 'maven:3.5.4'
           args '-v $HOME/.m2:/root/.m2:z -u root'
           reuseNode true
         }
