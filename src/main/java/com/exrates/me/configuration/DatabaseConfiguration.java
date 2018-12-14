@@ -3,7 +3,6 @@ package com.exrates.me.configuration;
 import com.exrates.me.util.SSMGetter;
 import com.zaxxer.hikari.HikariDataSource;
 import lombok.extern.log4j.Log4j2;
-import me.exrates.SSMGetter;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
