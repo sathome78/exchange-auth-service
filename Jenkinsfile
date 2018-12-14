@@ -1,22 +1,18 @@
 pipeline {
   agent any
   stages {
-     stage ('Build') {
+     stage('Maven Install') {
+      agent {
+        docker {
+          image 'maven:3.5.4'
+          args '-v $HOME/.m2:/root/.m2:z -u root'
+          reuseNode true
+        }
+      }
       steps {
-       withMaven(
-        // Maven installation declared in the Jenkins "Global Tool Configuration"
-        maven: 'M3',
-        // Maven settings.xml file defined with the Jenkins Config File Provider Plugin
-        // Maven settings and global settings can also be defined in Jenkins Global Tools Configuration
-        mavenSettingsConfig: 'my-maven-settings',
-        mavenLocalRepo: '.repository') {
- 
-      // Run the maven build
-      sh "mvn clean install"
- 
-    } // withMaven will discover the generated Maven artifacts, JUnit Surefire & FailSafe & FindBugs reports...
-  }
-     }
+        sh 'mvn clean package'
+      }
+    }
   stage('Upload to Atrtifactory') {
            steps {
               script {
