@@ -1,19 +1,19 @@
 pipeline {
-  
   agent any
-  
   stages {
-    stage('Maven Install') {
+     stage('Maven Install') {
       agent {
         docker {
           image 'maven:3.5.4'
+          args '-v $HOME/.m2:/root/.m2:z --user root:root'
+          reuseNode true
         }
       }
       steps {
         sh 'mvn clean package'
       }
     }
-    stage('Upload to Atrtifactory') {
+  stage('Upload to Atrtifactory') {
            steps {
               script {
                  def server = Artifactory.server 'art-1'
@@ -28,12 +28,14 @@ pipeline {
                }
             }
         }
+  
     stage('Docker Build') {
       agent any
       steps {
         sh 'docker build --build-arg ENVIRONMENT -t roadtomoon/exrates-auth-service:$ENVIRONMENT .'
       }
     } 
+
     stage('Docker pull') {
       agent any
       steps {
@@ -46,5 +48,16 @@ pipeline {
         sh 'docker -H tcp://localhost:2375 service update --image localhost:5000/authservice:$ENVIRONMENT $ENVIRONMENT-auth-service'
       }
     }
-  }  
+  
+  }
+  post {
+success {
+  slackSend (color: '#00FF00', message: "SUCCESSFUL: Job '${env.JOB_NAME} [EVN: $ENVIRONMENT] [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
+ 
+}
+failure {
+slackSend (color: '#FF0000', message: "FAILED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
+ 
+}
+}
 }
