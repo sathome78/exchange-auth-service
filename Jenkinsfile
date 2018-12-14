@@ -46,7 +46,7 @@ pipeline {
     } 
     stage('Deploy container') {
       steps {
-        sh 'docker -H tcp://localhost:2375 service update --image localhost:5000/authservice:$ENVIRONMENT $ENVIRONMENT-auth-service'
+        sh 'docker -H tcp://localhost:2375 service update --image localhost:5000/roadtomoon/exrates-auth-service:$ENVIRONMENT $ENVIRONMENT-auth-service'
       }
     }
   
