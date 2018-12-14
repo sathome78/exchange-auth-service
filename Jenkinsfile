@@ -2,13 +2,33 @@ pipeline {
   agent any
   stages {
   
-    stage('Docker Build') {
-      agent any
+    stage('Maven Install') {
+      agent {
+        docker {
+          image 'maven:3.5.4'
+          args '-v $HOME/.m2:/root/.m2:z -u root'
+          reuseNode true
+        }
+      }
       steps {
         sh 'mvn clean package'
-        sh 'docker build --build-arg ENVIRONMENT -t roadtomoon/exrates-auth-service:$ENVIRONMENT .'
       }
-    } 
+    }
+    stage('Upload to Atrtifactory') {
+           steps {
+              script {
+                 def server = Artifactory.server 'art-1'
+                 def uploadSpec = """{
+                    "files": [{
+                       "pattern": "/var/lib/jenkins/workspace/DEV-ex-micro-app-build/ex_micro_app_api_service@2/target/*.jar",
+                       "target": "exrates-api-service/"
+                    }]
+                 }"""
+
+                 server.upload(uploadSpec)
+               }
+            }
+        }
 
     stage('Docker pull') {
       agent any
