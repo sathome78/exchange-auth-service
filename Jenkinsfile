@@ -11,7 +11,7 @@ pipeline {
         }
       }
       steps {
-        sh 'mvn clean package'
+        sh 'mvn -U clean package'
       }
     }
     stage('Upload to Atrtifactory') {
