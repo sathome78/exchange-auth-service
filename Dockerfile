@@ -3,6 +3,9 @@ VOLUME /tmp
 ARG APP_PATH=/exrates-auth-service
 ARG ENVIRONMENT
 
+RUN curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-6.5.3-amd64.deb
+RUN dpkg -i filebeat-6.5.3-amd64.deb && rm -f filebeat-6.5.3-amd64.deb
+
 RUN mkdir -p exrates-auth-service
 COPY ./target/authorization-service.jar ${APP_PATH}/authorization-service.jar
 COPY ./target/config/${ENVIRONMENT}/application.yml ${APP_PATH}/application.yml
