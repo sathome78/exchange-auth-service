@@ -16,9 +16,4 @@ WORKDIR ${APP_PATH}
 RUN readlink -f application.yml
 EXPOSE 8080
 CMD java -jar authorization-service.jar
-CMD curl -L -O http://172.50.50.9:8081/artifactory/elk-libs/filebeat-6.5.3-amd64.deb
-CMD dpkg -i filebeat-6.5.3-amd64.deb
-CMD rm -f filebeat-6.5.3-amd64.deb
-CMD curl -L -O http://172.50.50.9:8081/artifactory/elk-libs/filebeat.yml
-CMD mv filebeat.yml /etc/filebeat/
 CMD service filebeat restart
