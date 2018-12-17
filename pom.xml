@@ -126,20 +126,15 @@
 			<version>2.8.0</version>
 			<scope>compile</scope>
 		</dependency>
-		<dependency>
-			<groupId>com.amazonaws</groupId>
-			<artifactId>aws-java-sdk-core</artifactId>
-			<version>${aws-java-sdk.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>com.amazonaws</groupId>
-			<artifactId>aws-java-sdk-ssm</artifactId>
-			<version>${aws-java-sdk.version}</version>
-		</dependency>
 
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>me.exrates</groupId>
+			<artifactId>ssm-integration</artifactId>
+			<version>1.0.2</version>
 		</dependency>
 	</dependencies>
 
