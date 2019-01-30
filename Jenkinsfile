@@ -46,7 +46,7 @@ pipeline {
     } 
     stage('Deploy container') {
       steps {
-        sh 'docker -H tcp://172.50.50.7:2375 service update --image 172.50.50.7:5000/authservice:$ENVIRONMENT $ENVIRONMENT-auth-service'
+        sh 'docker -H tcp://172.50.50.7:2376 service update --image 172.50.50.7:5000/authservice:$ENVIRONMENT $ENVIRONMENT-auth-service'
       }
     }
   
